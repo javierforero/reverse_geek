@@ -1,8 +1,13 @@
-ReverseWord give me the reverse of {slot value|Word}
-ReverseWord get the inverse of {slot value|Word}
-ReverseWord reverse {slot value|Word}
-ReverseWord tell me the reverse {slot value|Word}
-ReverseWord fetch the reverse of {slot value|Word}
-ReverseWord process {slot value|Word}
-ReverseWord what is the reverse of {slot value|Word}
-ReverseWord what's the reverse of {slot value|Word}
+ReverseWord give me the reverse of {Johnny Bravo|Word}
+ReverseWord tell me the reverse of {Johnny Bravo|Word}
+ReverseWord get the reverse of {Johnny Bravo|Word}
+ReverseWord what is the reverse of {Johnny Bravo|Word}
+ReverseWord what's the reverse of {Johnny Bravo|Word}
+ReverseWord fetch the reverse of {Johnny Bravo|Word}
+ReverseWord reverse {Johnny Bravo|Word}
+ReverseWord give me the inverse of {Johnny Bravo|Word}
+ReverseWord tell me the inverse of {Johnny Bravo|Word}
+ReverseWord get the inverse of {Johnny Bravo|Word}
+ReverseWord what is the inverse of {Johnny Bravo|Word}
+ReverseWord what's the inverse of {Johnny Bravo|Word}
+ReverseWord fetch the inverse of {Johnny Bravo|Word}

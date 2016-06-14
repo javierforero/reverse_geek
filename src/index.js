@@ -63,7 +63,7 @@ function onIntent(intentRequest, session, callback) {
     if ("ReverseWord" === intentName) {
         setWordInSession(intent, session, callback);
     } else if ("AMAZON.HelpIntent" === intentName) {
-        getWelcomeResponse(callback);
+        getHelp(callback);
     } else if ("AMAZON.StopIntent" === intentName || "AMAZON.CancelIntent" === intentName) {
         handleSessionEndRequest(callback);
     } else {
@@ -82,6 +82,17 @@ function getWelcomeResponse(callback) {
     var cardTitle = "Welcome";
     var speechOutput = "Hi there! I'm reverse geek. " +
         "What word do you want me to reverse?";
+    var repromptText = "What word do you want me to reverse?";
+    var shouldEndSession = false;
+
+    callback(sessionAttributes,
+        buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+}
+
+function getHelp(callback) {
+    var sessionAttributes = {};
+    var cardTitle = "help";
+    var speechOutput = "You can ask me to reverse a word by saying reverse this or that.";
     var repromptText = "What word do you want to reverse? You can say \"reverse carwheel\".";
     var shouldEndSession = false;
 
@@ -107,11 +118,11 @@ function setWordInSession(intent, session, callback) {
 
     if (wordSlot.value) {
         var word = wordSlot.value;
-        speechOutput = "The reverse of " + word + " is: " + reverseWord(word);
+        speechOutput = "The reverse of \"" + word + "\" is: " + reverseWord(word);
 
     } else {
         speechOutput = "Sorry. I didn't understand your word. Please try again";
-        repromptText = "Sorry. I didn't understand your word. You can tell me to reverse a word by saying, reverse cartwheel";
+        repromptText = "You can ask me to reverse a word by saying reverse this or that.";
         shouldEndSession = false;
     }
 
