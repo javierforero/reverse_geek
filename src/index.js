@@ -7,10 +7,6 @@
  * For additional samples, visit the Alexa Skills Kit Getting Started guide at
  * http://amzn.to/1LGWsLG
  */
-
-// Route the incoming request based on type (LaunchRequest, IntentRequest,
-// etc.) The JSON body of the request is provided in the event parameter.
-
 exports.handler = function (event, context) {
     try {
         console.log("event.session.application.applicationId=" + event.session.application.applicationId);
@@ -82,13 +78,10 @@ function onSessionEnded(sessionEndedRequest, session) {
 }
 
 function getWelcomeResponse(callback) {
-    // If we wanted to initialize the session to have some attributes we could add those here.
     var sessionAttributes = {};
     var cardTitle = "Welcome";
     var speechOutput = "Hi there! I'm reverse geek. " +
         "What word do you want me to reverse?";
-    // If the user either does not reply to the welcome message or says something that is not
-    // understood, they will be prompted again with this text.
     var repromptText = "What word do you want to reverse? You can say \"reverse carwheel\".";
     var shouldEndSession = false;
 
@@ -99,7 +92,6 @@ function getWelcomeResponse(callback) {
 function handleSessionEndRequest(callback) {
     var cardTitle = "Session Ended";
     var speechOutput = "Thank you for trying reverse geek. Have a nice day!";
-    // Setting this to true ends the session and exits the skill.
     var shouldEndSession = true;
 
     callback({}, buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
@@ -115,7 +107,6 @@ function setWordInSession(intent, session, callback) {
 
     if (wordSlot.value) {
         var word = wordSlot.value;
-        // sessionAttributes = createwordAttributes(word);
         speechOutput = "The reverse of " + word + " is: " + reverseWord(word);
 
     } else {
@@ -127,12 +118,6 @@ function setWordInSession(intent, session, callback) {
     callback(sessionAttributes,
          buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
-
-// function createwordAttributes(word) {
-//     return {
-//         word: word
-//     };
-// }
 
 var reverseWord = function(string) {
   if(string) {
