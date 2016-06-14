@@ -2,4 +2,7 @@ ReverseWord give me the reverse of {slot value|Word}
 ReverseWord get the inverse of {slot value|Word}
 ReverseWord reverse {slot value|Word}
 ReverseWord tell me the reverse {slot value|Word}
+ReverseWord fetch the reverse of {slot value|Word}
+ReverseWord process {slot value|Word}
+ReverseWord what is the reverse of {slot value|Word}
 ReverseWord what's the reverse of {slot value|Word}
