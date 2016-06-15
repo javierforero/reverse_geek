@@ -92,7 +92,7 @@ function getWelcomeResponse(callback) {
 function getHelp(callback) {
     var sessionAttributes = {};
     var cardTitle = "help";
-    var speechOutput = "You can ask me to reverse a word by saying reverse this or that.";
+    var speechOutput = "You can ask me to reverse a word. What word will it be?";
     var repromptText = "What word do you want to reverse? You can say \"reverse carwheel\".";
     var shouldEndSession = false;
 
@@ -122,7 +122,7 @@ function setWordInSession(intent, session, callback) {
 
     } else {
         speechOutput = "Sorry. I didn't understand your word. Please try again";
-        repromptText = "You can ask me to reverse a word by saying reverse this or that.";
+        repromptText = "You can ask me to reverse a word. What word will it be?";
         shouldEndSession = false;
     }
 
