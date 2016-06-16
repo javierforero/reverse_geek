@@ -79,37 +79,33 @@ function onSessionEnded(sessionEndedRequest, session) {
 
 function getWelcomeResponse(callback) {
     var sessionAttributes = {};
-    var cardTitle = "Welcome";
     var speechOutput = "Hi there! I'm reverse geek. " +
         "What word do you want me to reverse?";
     var repromptText = "What word do you want me to reverse?";
     var shouldEndSession = false;
 
     callback(sessionAttributes,
-        buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        buildSpeechletResponse(speechOutput, repromptText, shouldEndSession));
 }
 
 function getHelp(callback) {
     var sessionAttributes = {};
-    var cardTitle = "help";
     var speechOutput = "You can ask me to reverse a word. What word will it be?";
     var repromptText = "What word do you want to reverse? You can say \"reverse carwheel\".";
     var shouldEndSession = false;
 
     callback(sessionAttributes,
-        buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+        buildSpeechletResponse(speechOutput, repromptText, shouldEndSession));
 }
 
 function handleSessionEndRequest(callback) {
-    var cardTitle = "Session Ended";
     var speechOutput = "Thank you for trying reverse geek. Have a nice day!";
     var shouldEndSession = true;
 
-    callback({}, buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
+    callback({}, buildSpeechletResponse(speechOutput, null, shouldEndSession));
 }
 
 function setWordInSession(intent, session, callback) {
-    var cardTitle = intent.name;
     var wordSlot = intent.slots.Word;
     var repromptText = "";
     var sessionAttributes = {};
@@ -127,7 +123,7 @@ function setWordInSession(intent, session, callback) {
     }
 
     callback(sessionAttributes,
-         buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
+         buildSpeechletResponse(speechOutput, repromptText, shouldEndSession));
 }
 
 var reverseWord = function(string) {
@@ -138,16 +134,11 @@ var reverseWord = function(string) {
   }
 };
 
-function buildSpeechletResponse(title, output, repromptText, shouldEndSession) {
+function buildSpeechletResponse(output, repromptText, shouldEndSession) {
     return {
         outputSpeech: {
             type: "PlainText",
             text: output
-        },
-        card: {
-            type: "Simple",
-            title: "SessionSpeechlet - " + title,
-            content: "SessionSpeechlet - " + output
         },
         reprompt: {
             outputSpeech: {
